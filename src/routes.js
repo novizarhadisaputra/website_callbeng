@@ -1,19 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import LandingPage from "./pages/landing";
-import VerificationPage from "./pages/verification";
-import NotFound from "./components/NotFound";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import LandingPage from './pages/landing';
+import VerificationPage from './pages/verification';
+import NotFound from './components/notFound';
 
 export default function Routes() {
 	return (
 		<Router>
 			<Switch>
-				<Route exact path="/verification">
-					<VerificationPage />
-				</Route>
-				<Route exact path="/">
-					<LandingPage />
-				</Route>
+				<Route exact path="/" component={LandingPage} />
+
+				<Route exact path="/verification" component={VerificationPage} />
+
 				<Route component={NotFound} />
 			</Switch>
 		</Router>
