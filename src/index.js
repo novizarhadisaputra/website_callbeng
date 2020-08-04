@@ -1,13 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import './assets/main.css';
+import App from "./App";
 import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-require('jquery');
-require('popper.js');
-require('bootstrap');
 
 ReactDOM.render(
 	<React.StrictMode>
