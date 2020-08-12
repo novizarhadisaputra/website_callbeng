@@ -7,7 +7,7 @@ const DashboardPage = (props) => {
 	// handle click event of logout button
 	const handleLogout = () => {
 		removeUserSession();
-		props.history.push('/login');
+		props.history.push('/');
 	};
 
 	return (
