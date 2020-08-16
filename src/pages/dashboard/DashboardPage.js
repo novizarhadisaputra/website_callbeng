@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getUser, removeUserSession } from '../../utils/Common';
-import PropTypes from 'prop-types';
 import Sidebars from '../../components/sidebars/Sidebars';
 
 export default class DashboardPage extends Component {

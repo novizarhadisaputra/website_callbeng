@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Navbars from '../navbars/Navbars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUserFriends, faHistory } from '@fortawesome/free-solid-svg-icons';
