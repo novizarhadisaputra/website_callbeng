@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { getUser, removeUserSession } from '../../utils/Common';
+import PropTypes from 'prop-types';
+import Sidebars from '../../components/sidebars/Sidebars';
 
-const DashboardPage = (props) => {
-	const user = getUser();
+export default class DashboardPage extends Component {
+	constructor(props) {
+		super(props);
 
-	// handle click event of logout button
-	const handleLogout = () => {
-		removeUserSession();
-		props.history.push('/');
-	};
+		this.state = {
+			accordion: false,
+			user: getUser()
+		};
+	}
 
-	return (
-		<div>
-			Welcome {user.name}!<br />
-			<br />
-			<input type="button" onClick={handleLogout} value="Logout" />
-		</div>
-	);
-};
+	render() {
+		const showAccordion = () => {
+			this.setState({
+				accordion: !this.state.accordion
+			});
+		};
 
-export default DashboardPage;
+		const handleLogout = () => {
+			removeUserSession();
+			this.props.history.push('/');
+		};
+		return (
+			<div className=" h-screen w-screen bg-gray-200 ">
+				<Sidebars data={this.state} showAccordion={showAccordion} logout={handleLogout} />
+			</div>
+		);
+	}
+}

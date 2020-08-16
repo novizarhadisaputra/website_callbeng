@@ -4,6 +4,8 @@ import { setUserSession } from '../../utils/Common';
 import imageSide from '../../assets/images/side.jpg';
 // import imageLogo from '../../assets/images/logo-callbeng.png';
 import Alerts from '../../components/alerts/Alerts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 // import Loading from '../../components/loadings/Loadings';
 
 const useFormInput = (initialValue) => {
@@ -24,10 +26,15 @@ const LoginPage = (props) => {
 	const password = useFormInput('');
 	const [ loading, setLoading ] = useState(false);
 	const [ alert, setAlert ] = useState(false);
+	const [ eye, setEye ] = useState(false);
 	const [ message, setMessage ] = useState('');
 
 	const closeAlert = () => {
 		setAlert(false);
+	};
+
+	const changeTypeInputPassword = () => {
+		setEye(!eye);
 	};
 	// handle button click of login form
 	const handleLogin = () => {
@@ -71,28 +78,46 @@ const LoginPage = (props) => {
 
 						<h1 className="text-3xl text-gray text-center">Sign In</h1>
 						<div className="text-gray-600 text-sm">
-							<div className="my-3">
+							<div className="my-3 flex">
+								<div className="absolute p-2">
+									<FontAwesomeIcon className="" size="lg" icon={faEnvelope} />
+								</div>
+
 								<input
-									className="border w-full focus:border-blue-500 outline-none py-2 px-4 rounded"
+									className="border w-full focus:border-blue-500 outline-none py-2 px-10 rounded"
 									type="email"
 									placeholder="Email"
 									{...email}
 								/>
 							</div>
-							<div className="my-3">
+							<div className="my-3 flex">
+								<div className="absolute p-2">
+									<FontAwesomeIcon className="" size="lg" icon={faLock} />
+								</div>
 								<input
-									className="border w-full focus:border-blue-500 outline-none py-2 px-4 rounded"
-									type="password"
+									className="border w-full focus:border-blue-500 outline-none py-2 px-10 rounded"
+									type={eye ? 'text' : 'password'}
 									placeholder="Password"
 									{...password}
 								/>
+								<div className="p-2 -ml-10">
+									<FontAwesomeIcon
+										onClick={changeTypeInputPassword}
+										className=""
+										size="lg"
+										icon={eye ? faEye : faEyeSlash}
+									/>
+								</div>
 							</div>
 							<div className="my-3 flex justify-between">
 								<label htmlFor="" className="sm:text-xs md:text-base">
 									<input className="" type="checkbox" /> Remember me
 								</label>
 
-								<a href="http://google.com" className="sm:hover:text-blue-500 sm:text-xs md:text-base md:hover:text-blue-500">
+								<a
+									href="http://google.com"
+									className="sm:hover:text-blue-500 sm:text-xs md:text-base md:hover:text-blue-500"
+								>
 									Forgot password ?
 								</a>
 							</div>
