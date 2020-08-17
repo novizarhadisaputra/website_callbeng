@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUser, removeUserSession } from '../../utils/Common';
 import Sidebars from '../../components/sidebars/Sidebars';
+import DashboardTransactions from '../dashboard-transactions/DashboardTransactions';
 
 export default class DashboardPage extends Component {
 	constructor(props) {
@@ -8,7 +9,9 @@ export default class DashboardPage extends Component {
 
 		this.state = {
 			accordion: false,
-			user: getUser()
+			user: getUser(),
+			isUserMenu: false,
+			isTransactionMenu: false
 		};
 	}
 
@@ -23,10 +26,6 @@ export default class DashboardPage extends Component {
 			removeUserSession();
 			this.props.history.push('/');
 		};
-		return (
-			<div className=" h-screen w-screen bg-gray-200 ">
-				<Sidebars data={this.state} showAccordion={showAccordion} logout={handleLogout} />
-			</div>
-		);
+		return <Sidebars data={this.state} showAccordion={showAccordion} logout={handleLogout} />;
 	}
 }

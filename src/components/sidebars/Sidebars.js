@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbars from '../navbars/Navbars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUserFriends, faHistory } from '@fortawesome/free-solid-svg-icons';
+import DashboardTransactions from '../../pages/dashboard-transactions/DashboardTransactions';
 
 export default class Sidebars extends Component {
 	constructor(props) {
@@ -54,6 +55,7 @@ export default class Sidebars extends Component {
 						</div>
 						<div className="hidden md:hidden lg:w-5/6 lg:block">
 							<Navbars data={data} showAccordion={showAccordion} logout={logout} />
+							<DashboardTransactions></DashboardTransactions>
 						</div>
 					</div>
 				</div>
