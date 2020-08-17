@@ -3,12 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default class Navbars extends Component {
-	constructor(props) {
-		super(props);
-	}
-
+	
 	render() {
-		let { showAccordion, logout } = this.props;
+		let { data, showAccordion, handleLogout } = this.props;
 
 		return (
 			<div className="w-full h-16">
@@ -17,11 +14,11 @@ export default class Navbars extends Component {
 					<div className="hidden md:text-white md:block">
 						<div onClick={showAccordion} style={{ cursor: 'pointer' }}>
 							<FontAwesomeIcon icon={faUser} />
-							<span className="ml-2">{this.props.data.user.name}</span>
+							<span className="ml-2">{data.user.name}</span>
 						</div>
 						{this.props.data.accordion && (
 							<div className="w-full">
-								<Accordion logout={logout} />
+								<Accordion handleLogout={handleLogout} />
 							</div>
 						)}
 					</div>
@@ -32,12 +29,7 @@ export default class Navbars extends Component {
 }
 
 export class Accordion extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {};
-	}
-
+	
 	render() {
 		return (
 			<div className="absolute rounded bg-white shadow-md mt-2">
@@ -49,7 +41,7 @@ export class Accordion extends Component {
 				</div>
 				<div className="text-gray-600 px-4 py-2 hover:bg-blue-500 hover:text-white">
 					<FontAwesomeIcon icon={faSignOutAlt} />
-					<span onClick={this.props.logout} className="ml-2" style={{ cursor: 'pointer' }}>
+					<span onClick={this.props.handleLogout} className="ml-2" style={{ cursor: 'pointer' }}>
 						Sign Out
 					</span>
 				</div>

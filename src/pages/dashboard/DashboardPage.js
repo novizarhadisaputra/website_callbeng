@@ -10,6 +10,7 @@ export default class DashboardPage extends Component {
 		this.state = {
 			accordion: false,
 			user: getUser(),
+			prevMenu: '',
 			isUserMenu: false,
 			isTransactionMenu: false
 		};
@@ -17,7 +18,7 @@ export default class DashboardPage extends Component {
 
 	render() {
 		const showAccordion = () => {
-			this.setState({
+			return this.setState({
 				accordion: !this.state.accordion
 			});
 		};
@@ -26,6 +27,22 @@ export default class DashboardPage extends Component {
 			removeUserSession();
 			this.props.history.push('/');
 		};
-		return <Sidebars data={this.state} showAccordion={showAccordion} logout={handleLogout} />;
+
+		const goToMenu = (menu) => {
+			let changeMenu = {};
+			changeMenu[menu] = true;
+			changeMenu['prevMenu'] = menu;
+			if (menu !== this.state.prevMenu) {
+				changeMenu[this.state.prevMenu] = false;		
+			}
+			return this.setState(changeMenu);
+		};
+
+		const main = {
+			showAccordion,
+			handleLogout,
+			goToMenu
+		};
+		return <Sidebars data={this.state} {...main} />;
 	}
 }
