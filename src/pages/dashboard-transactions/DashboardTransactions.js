@@ -9,7 +9,7 @@ export default class DashboardTransactions extends Component {
 				<div className="flex">
 					<span className="text-3xl font-bold">Transactions</span>
 				</div>
-				<div className="flex">
+				<div className="flex justify-between">
 					<div className="my-4 w-2/6 bg-green-400 text-gray-200 max-w-sm rounded overflow-hidden shadow-lg">
 						<div className="px-6 py-4">
 							<div className="font-bold text-xl mb-2">Total Transactions</div>
